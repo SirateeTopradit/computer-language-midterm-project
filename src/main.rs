@@ -78,7 +78,7 @@ impl<'a> Lexer<'a> {
 
     fn skip_whitespace_and_comments(&mut self) {
         while let Some(&c) = self.chars.peek() {
-            if c.is_whitespace() {
+            if c.is_whitespace() || c == '\u{feff}' {
                 self.chars.next();
             } else if c == ';' {
                 // Skip comment to end of line
